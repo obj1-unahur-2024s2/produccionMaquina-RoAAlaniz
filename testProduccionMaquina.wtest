@@ -1,9 +1,27 @@
 import maquina.*
 
-describe "group of tests ..." {
-
-  test "test 1 ..." {
-    assert.that(true)
+describe "Test de máquina de producción" {
+  method initialize(){
+    maquina.agregarProduccion([43, 18, 49, 62, 33, 39])
   }
 
+  test "Algún día se produjo 49 producciones" {
+    assert.that(algunDiaSeProdujo(49))
+  }
+
+  test "Algún día se produjo 48 producciones" {
+    assert.notThat(algunDiaSeProdujo(48))
+  }
+  
+  test "El maximo valor de produccion" {
+    assert.equals(62, maquina.maximoValorDeProduccion())
+  }
+
+  test "Los valores De Produccion Pares" {
+    assert.equals([18, 62], maquina.valoresDeProduccionPares())
+  }
+
+  test "La produccion Es Acotada (10,100)" {
+    assert.that(maquina.produccionEsAcotada(10,100))
+  }
 }
